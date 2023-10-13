@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width:100%;
+  background:#ddd;
+}
+
+td, th {
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+div {
+width:700px;
+height:500px;
+background-color:#ccc;
+overflow:scroll;
+}
+
+</style>
+</head>
+<body>
+
+<p>Click the buttons to create and delete row(s) for the table.</p>
+<button id="xx" onclick="myCreateFunction()">Create row</button>
+<button id="yy" onclick="myDeleteFunction()">Delete row</button>
+
+<div id="area" tabindex="0">
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>SURNAME</th>
+        </tr>    
+     </thead>
+    <tbody></tbody>
+</table>
+</div>
+
+
+<script>
+document.getElementById('area').addEventListener("keypress", function(event) {
+   
+    if (event.keyCode == 13)
+    {
+       document.getElementById('xx').onclick();
+       
+      console.log("Enter inside div");
+      document.getElementById('area').style.backgroundColor="#ff0000";
+    } else if (event.keyCode == 32)
+    {
+       
+       
+      console.log("Space inside div");
+      document.getElementById('area').style.backgroundColor="#00ff00";
+    }
+});
+
+var n;
+function myCreateFunction() {
+  let myTable = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+
+n = myTable.rows.length;
+console.log(myTable,'----',n);
+let row = myTable.insertRow(n);
+let cell1 = row.insertCell(0);
+let cell2 = row.insertCell(1);
+let cell3 = row.insertCell(2);
+
+cell1.innerHTML = n;
+cell2.innerHTML = 'Igor';
+cell3.innerHTML = 'Curic';
+
+
+}
+
+function myDeleteFunction() {
+  let myTable = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+  n = myTable.rows.length;
+  myTable.deleteRow(n-1);
+  console.log(myTable,'----',n-1);
+}
+
+
+
+</script>
+
+</body>
+</html>

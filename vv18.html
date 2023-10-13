@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width:100%;
+  background:#ddd;
+}
+
+td, th {
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+div {
+width:700px;
+height:500px;
+background-color:#ccc;
+}
+
+</style>
+</head>
+<body>
+
+<p>Click the buttons to create and delete row(s) for the table.</p>
+<button onclick="myCreateFunction()">Create row</button>
+<button onclick="myDeleteFunction()">Delete row</button>
+
+<div>
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>AGE</th>
+        </tr>    
+     </thead>
+    <tbody></tbody>
+</table>
+</div>
+
+
+<script>
+var i=0;
+var n;
+function myCreateFunction() {
+  let myTable = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+
+n = myTable.rows.length;
+console.log(myTable,'----',n);
+let row = myTable.insertRow(n);
+let cell1 = row.insertCell(0);
+let cell2 = row.insertCell(1);
+let cell3 = row.insertCell(2);
+
+cell1.innerHTML = n;
+cell2.innerHTML = 'Igor';
+cell3.innerHTML = 'Curic';
+
+
+}
+
+function myDeleteFunction() {
+  let myTable = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+  n = myTable.rows.length;
+  myTable.deleteRow(n-1);
+  console.log(myTable,'----',n-1);
+}
+
+document.getElementById('myTable').addEventListener("keypress", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13)
+    {
+      document.getElementById('myTable').click();
+    }
+});
+
+// document.getElementById("myTable").addEventListener('"keypress", function (event) {
+
+//     event.preventDefault();
+    
+//     if (event.keyCode == 13){
+//     // document.getElementById('myTable').click();
+//     console.log("kliknuto");
+//     }
+//   }
+// );
+
+
+</script>
+
+</body>
+</html>
+
